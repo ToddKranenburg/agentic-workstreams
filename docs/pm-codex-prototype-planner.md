@@ -73,6 +73,31 @@ Notes:
 5. Automated branch/commit/PR workflow.
 6. PM review console across all active workstreams.
 
+## Authentication model for Codex access
+For now, design this as a **single-user app** (you as the only user).
+
+Recommended phased approach:
+
+### Phase 1 (now): single-user owner mode
+- You log into your app with a single local/app account.
+- You configure one OpenAI API credential in app settings.
+- The backend uses that credential for all Codex agent runs.
+- No user roles, team permissions, or multi-tenant complexity yet.
+
+### Phase 2: self-serve individual usage
+- Any new user can sign up and connect their own OpenAI account/credential.
+- Each user gets isolated projects, usage tracking, and limits.
+- Still no team roles required.
+
+### Phase 3 (later): collaborative/team mode
+- Add team workspaces and role-based access only when there is a real collaboration need.
+- Introduce shared billing/admin controls at that stage.
+
+Why this sequence fits your goal:
+- fastest path to prototype velocity,
+- minimal auth/permissions surface area in v1,
+- easy migration path toward broader adoption later.
+
 ## Success metric framework (impact-focused)
 Primary metric: **PM Weekly Prototype Impact**
 
