@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agentic Workstreams MVP</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Agentic Workstreams</h1>
+      <button id="reset-demo">Reset Demo</button>
+    </header>
+
+    <main>
+      <section class="panel">
+        <div class="section-head">
+          <h2>Workstreams</h2>
+          <button id="open-workstream-modal" class="subtle-btn">+ Add workstream</button>
+        </div>
+        <p class="helper">
+          Drag tasks to reorder backlog. Task marked <strong>In Progress</strong> is fixed and
+          cannot be moved. Only one task per workstream can be in progress.
+        </p>
+        <div id="workstreams" class="workstreams"></div>
+      </section>
+    </main>
+
+    <dialog id="workstream-modal" class="modal">
+      <form id="workstream-form" class="modal-form" method="dialog">
+        <h3>Create workstream</h3>
+        <label>
+          Name
+          <input id="workstream-name" required placeholder="e.g. Pricing Experiment" />
+        </label>
+        <div class="modal-actions">
+          <button type="button" id="cancel-workstream" class="subtle-btn">Cancel</button>
+          <button type="submit">Create</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="task-modal" class="modal">
+      <form id="task-form" class="modal-form" method="dialog">
+        <h3>Create task</h3>
+        <label>
+          Name
+          <input id="task-name" required placeholder="Task name" />
+        </label>
+        <label>
+          Description
+          <textarea id="task-description" rows="4" placeholder="Task description"></textarea>
+        </label>
+        <div class="modal-actions">
+          <button type="button" id="cancel-task" class="subtle-btn">Cancel</button>
+          <button type="submit">Create</button>
+        </div>
+      </form>
+    </dialog>
+
+    <template id="task-template">
+      <article class="task" draggable="true">
+        <div class="task-top">
+          <strong class="task-title"></strong>
+          <p class="task-description"></p>
+          <span class="task-state"></span>
+        </div>
+        <div class="task-actions">
+          <button data-action="start">Start</button>
+          <button data-action="done">Done</button>
+        </div>
+      </article>
+    </template>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
